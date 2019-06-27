@@ -1,4 +1,4 @@
-# Life Calendar <img src="../src/images/Mood.png" width="45" alt="Mood">
+# Life Calendar <img src="./Mood.png" width="200" alt="Mood">
 
 _Single Page Application created with React. The app, is a simple life calendar to add your mood by day. It's allows to select two different moods (happy or sad) and to write a message according to your choose_
 
