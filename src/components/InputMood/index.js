@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-const Input = props => {
-  const { id, option, name, moodChange } = props;
+const InputMood = props => {
+  const { id, value, name, handleDataInput } = props;
+
   return (
     <label htmlFor={id} title={id}>
       {name}
@@ -11,18 +12,18 @@ const Input = props => {
         type="radio"
         name="mood"
         id={id}
-        option={option}
-        onChange={moodChange}
+        value={value}
+        onChange={handleDataInput}
       />
     </label>
   );
 };
 
-Input.propTypes = {
+InputMood.propTypes = {
   id: PropTypes.string.isRequired,
-  option: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  moodChange: PropTypes.func.isRequired,
+  handleDataInput: PropTypes.func.isRequired,
 };
 
-export default Input;
+export default InputMood;
