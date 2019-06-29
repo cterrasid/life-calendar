@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 const InputMood = props => {
-  const { id, value, name, handleDataInput } = props;
+  const { id, value, name, handleMoodInput } = props;
 
   return (
     <label htmlFor={id} title={id}>
@@ -13,7 +13,7 @@ const InputMood = props => {
         name="mood"
         id={id}
         value={value}
-        onChange={handleDataInput}
+        onChange={handleMoodInput}
       />
     </label>
   );
@@ -23,7 +23,7 @@ InputMood.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  handleDataInput: PropTypes.func.isRequired,
+  handleMoodInput: PropTypes.func.isRequired,
 };
 
 export default InputMood;

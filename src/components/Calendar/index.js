@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
 const Calendar = () => {
   return (
     <div className="calendar__container">
-      <button className="calendar__edit" type="button">
+      <Link to="/editor" className="calendar__edit">
         +
-      </button>
+      </Link>
       <section className="calendar__days">Aqui van las caritas</section>
     </div>
   );

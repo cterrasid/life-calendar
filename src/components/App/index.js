@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import Form from '../Form';
+import { Route, Switch } from 'react-router-dom';
 import Calendar from '../Calendar';
+import Editor from '../Editor';
 import './styles.scss';
 
 class App extends PureComponent {
@@ -8,35 +9,98 @@ class App extends PureComponent {
     super(props);
 
     this.state = {
-      mood: '1',
-      date: 'dd/mm/aaaa',
-      message: '',
+      editor: {
+        mood: '1',
+        date: 'dd/mm/aaaa',
+        message: '',
+      },
     };
 
-    this.handleDataInput = this.handleDataInput.bind(this);
+    this.handleMoodInput = this.handleMoodInput.bind(this);
+    this.handleDateInput = this.handleDateInput.bind(this);
+    this.handleMessageInput = this.handleMessageInput.bind(this);
+    this.handleSaveButton = this.handleSaveButton.bind(this);
   }
 
-  handleDataInput(e) {
+  // componentDidMount() {
+  //   if (localStorage.userMood) {
+  //     const dataFromLS = JSON.parse(localStorage.getItem('userMood'));
+  //     this.setState({
+  //       editor: {
+  //         mood: dataFromLS,
+  //         date: dataFromLS,
+  //         message: dataFromLS,
+  //       },
+  //     });
+  //   }
+  // }
+
+  handleMoodInput(e) {
     const { value } = e.target;
 
-    this.setState({
-      mood: value,
-      date: value,
-      message: value,
+    this.setState(state => {
+      return {
+        editor: {
+          ...state.editor,
+          mood: value,
+        },
+      };
     });
   }
 
+  handleDateInput(e) {
+    const { value } = e.target;
+
+    this.setState(state => {
+      return {
+        editor: {
+          ...state.editor,
+          date: value,
+        },
+      };
+    });
+  }
+
+  handleMessageInput(e) {
+    const { value } = e.target;
+
+    this.setState(state => {
+      return {
+        editor: {
+          ...state.editor,
+          message: value,
+        },
+      };
+    });
+  }
+
+  handleSaveButton() {
+    localStorage.setItem('userMood', JSON.stringify(this.state));
+  }
+
   render() {
-    const { mood, date, message } = this.state;
+    const { editor } = this.state;
+
     return (
       <div className="app__container">
-        <Calendar />
-        <Form
-          mood={mood}
-          date={date}
-          message={message}
-          handleDataInput={this.handleDataInput}
-        />
+        <Switch>
+          <Route exact path="/" render={() => <Calendar />} />
+          <Route
+            path="/editor"
+            render={routerProps => (
+              <Editor
+                match={routerProps.match}
+                mood={editor.mood}
+                message={editor.message}
+                date={editor.message}
+                handleDateInput={this.handleDateInput}
+                handleMoodInput={this.handleMoodInput}
+                handleMessageInput={this.handleMessageInput}
+                handleSaveButton={this.handleSaveButton}
+              />
+            )}
+          />
+        </Switch>
       </div>
     );
   }
