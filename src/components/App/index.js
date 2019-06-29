@@ -14,26 +14,23 @@ class App extends PureComponent {
         date: 'dd/mm/aaaa',
         message: '',
       },
+      moodCollector: [],
     };
 
     this.handleMoodInput = this.handleMoodInput.bind(this);
     this.handleDateInput = this.handleDateInput.bind(this);
     this.handleMessageInput = this.handleMessageInput.bind(this);
-    this.handleSaveButton = this.handleSaveButton.bind(this);
+    this.handleSaveData = this.handleSaveData.bind(this);
   }
 
-  // componentDidMount() {
-  //   if (localStorage.userMood) {
-  //     const dataFromLS = JSON.parse(localStorage.getItem('userMood'));
-  //     this.setState({
-  //       editor: {
-  //         mood: dataFromLS,
-  //         date: dataFromLS,
-  //         message: dataFromLS,
-  //       },
-  //     });
-  //   }
-  // }
+  componentDidMount() {
+    if (localStorage.userMood) {
+      const userMoodLS = JSON.parse(localStorage.getItem('userMood'));
+      this.setState({
+        moodCollector: userMoodLS,
+      });
+    }
+  }
 
   handleMoodInput(e) {
     const { value } = e.target;
@@ -74,7 +71,7 @@ class App extends PureComponent {
     });
   }
 
-  handleSaveButton() {
+  handleSaveData() {
     localStorage.setItem('userMood', JSON.stringify(this.state));
   }
 
@@ -84,7 +81,17 @@ class App extends PureComponent {
     return (
       <div className="app__container">
         <Switch>
-          <Route exact path="/" render={() => <Calendar />} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Calendar
+                mood={editor.mood}
+                message={editor.message}
+                date={editor.date}
+              />
+            )}
+          />
           <Route
             path="/editor"
             render={routerProps => (
@@ -96,7 +103,7 @@ class App extends PureComponent {
                 handleDateInput={this.handleDateInput}
                 handleMoodInput={this.handleMoodInput}
                 handleMessageInput={this.handleMessageInput}
-                handleSaveButton={this.handleSaveButton}
+                handleSaveData={this.handleSaveData}
               />
             )}
           />

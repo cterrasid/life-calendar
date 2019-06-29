@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 const InputMessage = props => {
-  const { handleMessageInput } = props;
+  const { message, handleMessageInput } = props;
   return (
     <label htmlFor="message" title="message">
       <textarea
@@ -12,6 +12,7 @@ const InputMessage = props => {
         rows="2"
         cols="20"
         placeholder="Why are you happy today?"
+        value={message}
         onChange={handleMessageInput}
       />
     </label>
@@ -19,6 +20,7 @@ const InputMessage = props => {
 };
 
 InputMessage.propTypes = {
+  message: PropTypes.string.isRequired,
   handleMessageInput: PropTypes.func.isRequired,
 };
 

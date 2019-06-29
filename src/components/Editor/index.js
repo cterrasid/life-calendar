@@ -2,24 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import InputMood from '../InputMood';
+import InputDate from '../InputDate';
 import InputMessage from '../InputMessage';
+import Button from '../Button';
 import './styles.scss';
 
 const Editor = props => {
   const {
     mood,
+    date,
+    message,
     handleDateInput,
     handleMoodInput,
     handleMessageInput,
-    handleSaveButton,
+    handleSaveData,
   } = props;
 
   return (
     <form className="form__container">
-      <label htmlFor="date" title="date">
-        Date
-        <input type="date" id="date" name="date" onChange={handleDateInput} />
-      </label>
+      <InputDate date={date} handleDateInput={handleDateInput} />
       <div className="mood__selector">
         <p>Mood</p>
         <InputMood
@@ -38,17 +39,13 @@ const Editor = props => {
         />
       </div>
       {mood === '1' ? (
-        <InputMessage handleMessageInput={handleMessageInput} />
+        <InputMessage
+          message={message}
+          handleMessageInput={handleMessageInput}
+        />
       ) : null}
       <Link to="/">
-        <label htmlFor="save" title="save">
-          <input
-            type="button"
-            id="save"
-            value="Save"
-            onClick={handleSaveButton}
-          />
-        </label>
+        <Button handleSaveData={handleSaveData} />
       </Link>
       <Link to="/">
         <label htmlFor="cancel" title="cancel">
@@ -61,10 +58,12 @@ const Editor = props => {
 
 Editor.propTypes = {
   mood: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   handleDateInput: PropTypes.func.isRequired,
   handleMoodInput: PropTypes.func.isRequired,
   handleMessageInput: PropTypes.func.isRequired,
-  handleSaveButton: PropTypes.func.isRequired,
+  handleSaveData: PropTypes.func.isRequired,
 };
 
 export default Editor;
