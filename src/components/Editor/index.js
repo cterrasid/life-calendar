@@ -42,6 +42,7 @@ const Editor = props => {
           />
         </div>
       </div>
+      {/* PREGUNTAR A ROCIO */}
       {mood === ':)' ? (
         <InputMessage
           message={message}
@@ -50,7 +51,8 @@ const Editor = props => {
       ) : null}
       <div className="editor__buttons">
         <Link to="/">
-          <Button value="Save" onClick={handleSaveData} />
+          {/* AQUI ESTA LA VAINA QUE FALLA */}
+          <Button value="Save" handleSaveData={handleSaveData} />
         </Link>
         <Link to="/">
           <Button value="Cancel" />

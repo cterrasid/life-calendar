@@ -11,11 +11,7 @@
     }
   }
 
-  &__date{
-    @include inputWrapper;
-  }
-
-  &__mood {
+  &__date, &__mood{
     @include inputWrapper;
   }
 

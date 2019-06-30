@@ -21,10 +21,9 @@ class App extends PureComponent {
     this.handleDateInput = this.handleDateInput.bind(this);
     this.handleMessageInput = this.handleMessageInput.bind(this);
     this.handleSaveData = this.handleSaveData.bind(this);
-    this.getLocalStorage = this.getLocalStorage.bind(this);
   }
 
-  getLocalStorage() {
+  componentDidMount() {
     if (localStorage.userMood) {
       const userMoodLS = JSON.parse(localStorage.getItem('userMood'));
       this.setState({
