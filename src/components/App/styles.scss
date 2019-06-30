@@ -1,0 +1,21 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: $font-primary;
+  color: $blackFuture;
+}
+
+.app {
+  &__container {
+    @include flexContainer(flex, center, center, unset);
+    @include boxSize(100vh, unset);
+  }
+}

@@ -1,4 +1,4 @@
-@import '../src/sass/variables.scss';
+@import '../../scss/variables.scss';
 
 @mixin flexContainer($display, $justifyContent, $alignItems, $flexDirection) {
   display: $display;
@@ -20,17 +20,45 @@
   width: $width;
 }
 
+@mixin mood($happy: true) {
+  @if $happy {
+    background-color: yellow;
+    color: black;
+  } @else {
+    background-color: red;
+    color: white;
+  }
+}
+
 @mixin buttons {
   border-radius: 5px;
   border: none;
   background-color: $blueMelancholy;
-  color: $whiteDream;
+  color: $whiteMind;
   font-weight: bold;
   box-shadow: 0 4px 12px 0 $niceBlueShadow;
 }
 
-@mixin inputs {
+@mixin shadowBox {
   border-radius: 5px;
-  border: 1px solid $graySadness;
+  border: none;
   box-shadow: 0 4px 12px 0 $niceBlueShadow;
 }
+
+@mixin simpleBox{
+  @include boxSize(40px, 260px);
+  border-radius: 5px;
+  border: 1px solid $grayPerson;
+  padding: 10px;
+}
+
+@mixin inputWrapper {
+  @include boxSize(15%, 90%);
+  @include flexContainer(flex, space-evenly, flex-start, column);
+}
+
+@mixin mainContainers {
+  @include shadowBox;
+  @include boxSize(75%, 90%);
+}
+

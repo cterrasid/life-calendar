@@ -3,27 +3,30 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 const InputMood = props => {
-  const { id, value, name, handleDataInput } = props;
+  const { mood, id, value, name, handleMoodInput } = props;
 
   return (
     <label htmlFor={id} title={id}>
-      {name}
       <input
-        type="radio"
-        name="mood"
+        className="mood"
         id={id}
         value={value}
-        onChange={handleDataInput}
+        name="mood"
+        type="radio"
+        checked={mood.includes(value)}
+        onChange={handleMoodInput}
       />
+      {name}
     </label>
   );
 };
 
 InputMood.propTypes = {
+  mood: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  handleDataInput: PropTypes.func.isRequired,
+  handleMoodInput: PropTypes.func.isRequired,
 };
 
 export default InputMood;

@@ -1,15 +1,33 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Button from '../Button';
 import './styles.scss';
 
-const Calendar = () => {
+const Calendar = props => {
+  const { moodCollector } = props;
   return (
     <div className="calendar__container">
-      <button className="calendar__edit" type="button">
-        +
-      </button>
-      <section className="calendar__days">Aqui van las caritas</section>
+      <Link to="/editor" className="calendar__edit">
+        <Button value="+" className="calendar__edit-button" />
+      </Link>
+      <section className="calendar__days">
+        <ul>
+          {moodCollector.map(day => (
+            <li key={day.date} className="calendar__day">
+              <p className="calendar__day-mood">{day.mood}</p>
+              <p className="calendar__day-date">{day.date}</p>
+              <p className="calendar__day-message">{day.message}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
+};
+
+Calendar.propTypes = {
+  moodCollector: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Calendar;
