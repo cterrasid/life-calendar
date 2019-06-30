@@ -39,7 +39,7 @@
   box-shadow: 0 4px 12px 0 $niceBlueShadow;
 }
 
-@mixin boxes {
+@mixin shadowBox {
   border-radius: 5px;
   border: none;
   box-shadow: 0 4px 12px 0 $niceBlueShadow;
@@ -48,4 +48,11 @@
 @mixin inputWrapper {
   @include boxSize(15%, 90%);
   @include flexContainer(flex, space-evenly, flex-start, column);
+}
+
+@mixin simpleBox{
+  @include boxSize(40px, 260px);
+  border-radius: 5px;
+  border: 1px solid $grayPerson;
+  padding: 10px;
 }

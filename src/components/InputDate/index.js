@@ -7,7 +7,13 @@ const InputDate = props => {
 
   return (
     <label htmlFor="date" title="date">
-      <input type="date" id="date" name="date" onChange={handleDateInput} />
+      <input
+        id="date"
+        type="date"
+        className="date__box"
+        name="date"
+        onChange={handleDateInput}
+      />
     </label>
   );
 };

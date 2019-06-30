@@ -3,7 +3,7 @@
 
 .editor {
   &__container {
-    @include boxes;
+    @include shadowBox;
     @include boxSize(75%, 90%);
     @include flexContainer(flex, space-evenly, center, column);
   }

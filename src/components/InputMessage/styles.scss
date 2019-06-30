@@ -2,8 +2,5 @@
 @import '../../scss/mixins.scss';
 
 .message__box {
-  @include boxSize(40px, 250px);
-  border-radius: 5px;
-  border: 1px solid $grayPerson;
-  padding: 10px;
+  @include simpleBox;
 }
