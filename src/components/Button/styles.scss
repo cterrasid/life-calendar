@@ -1,0 +1,8 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+button {
+  margin: 2px;
+  @include buttons;
+  @include boxSize(30px, 255px);
+}
