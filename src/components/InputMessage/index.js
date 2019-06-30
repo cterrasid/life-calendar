@@ -9,6 +9,7 @@ const InputMessage = props => {
       <textarea
         id="message"
         name="message"
+        className="message__box"
         rows="2"
         cols="20"
         placeholder="Why are you happy today?"

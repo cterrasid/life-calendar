@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 const Calendar = props => {
-  const { mood, date, message } = props;
+  const { moodCollector } = props;
   return (
     <div className="calendar__container">
       <Link to="/editor" className="calendar__edit">
@@ -12,12 +12,13 @@ const Calendar = props => {
       </Link>
       <section className="calendar__days">
         <ul>
-          {/* RECUERDA GENERAR UN ARRAY PARA QUE AQUI ITERE */}
-          <li>
-            <p>{mood}</p>
-            <p>{date}</p>
-            <p>{message}</p>
-          </li>
+          {moodCollector.map(day => (
+            <li key={day.date}>
+              <p className="prueba">{day.mood}</p>
+              <p>{day.date}</p>
+              <p>{day.message}</p>
+            </li>
+          ))}
         </ul>
       </section>
     </div>
@@ -25,9 +26,7 @@ const Calendar = props => {
 };
 
 Calendar.propTypes = {
-  mood: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
+  moodCollector: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Calendar;

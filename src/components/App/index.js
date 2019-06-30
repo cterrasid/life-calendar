@@ -10,7 +10,7 @@ class App extends PureComponent {
 
     this.state = {
       editor: {
-        mood: '1',
+        mood: ':)',
         date: 'dd/mm/aaaa',
         message: '',
       },
@@ -84,7 +84,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const { editor } = this.state;
+    const { editor, moodCollector } = this.state;
 
     return (
       <div className="app__container">
@@ -92,13 +92,7 @@ class App extends PureComponent {
           <Route
             exact
             path="/"
-            render={() => (
-              <Calendar
-                mood={editor.mood}
-                message={editor.message}
-                date={editor.date}
-              />
-            )}
+            render={() => <Calendar moodCollector={moodCollector} />}
           />
           <Route
             path="/editor"

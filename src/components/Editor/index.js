@@ -31,14 +31,14 @@ const Editor = props => {
             id="happy"
             name=":)"
             value=":)"
-            checked=":)"
+            mood={mood}
             handleMoodInput={handleMoodInput}
           />
           <InputMood
             id="sad"
             name=":("
             value=":("
-            checked=":("
+            mood={mood}
             handleMoodInput={handleMoodInput}
           />
         </div>

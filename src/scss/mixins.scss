@@ -20,6 +20,16 @@
   width: $width;
 }
 
+// @mixin mood($happy: true) {
+//   @if $happy {
+//     background-color: yellow;
+//     color: black;
+//   } @else {
+//     background-color: red;
+//     color: white;
+//   }
+// }
+
 @mixin buttons {
   border-radius: 5px;
   border: none;
@@ -31,6 +41,7 @@
 
 @mixin boxes {
   border-radius: 5px;
+  border: none;
   box-shadow: 0 4px 12px 0 $niceBlueShadow;
 }
 
