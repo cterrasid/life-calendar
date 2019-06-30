@@ -72,7 +72,15 @@ class App extends PureComponent {
   }
 
   handleSaveData() {
-    localStorage.setItem('userMood', JSON.stringify(this.state));
+    const { moodCollector } = this.state;
+    this.setState(
+      state => {
+        return {
+          moodCollector: state.moodCollector.concat(state.editor),
+        };
+      },
+      () => localStorage.setItem('userMood', JSON.stringify(moodCollector)),
+    );
   }
 
   render() {
