@@ -15,6 +15,7 @@ const Editor = props => {
     handleMoodInput,
     handleMessageInput,
     handleSaveData,
+    handleClearData,
   } = props;
 
   return (
@@ -42,7 +43,6 @@ const Editor = props => {
           />
         </div>
       </div>
-      {/* PREGUNTAR A ROCIO */}
       {mood === ':)' ? (
         <InputMessage
           message={message}
@@ -51,11 +51,10 @@ const Editor = props => {
       ) : null}
       <div className="editor__buttons">
         <Link to="/">
-          {/* AQUI ESTA LA VAINA QUE FALLA */}
-          <Button value="Save" handleSaveData={handleSaveData} />
+          <Button value="Save" handleData={handleSaveData} />
         </Link>
         <Link to="/">
-          <Button value="Cancel" />
+          <Button value="Cancel" handleData={handleClearData} />
         </Link>
       </div>
     </form>
@@ -69,6 +68,7 @@ Editor.propTypes = {
   handleMoodInput: PropTypes.func.isRequired,
   handleMessageInput: PropTypes.func.isRequired,
   handleSaveData: PropTypes.func.isRequired,
+  handleClearData: PropTypes.func.isRequired,
 };
 
 export default Editor;

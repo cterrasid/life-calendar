@@ -21,6 +21,7 @@ class App extends PureComponent {
     this.handleDateInput = this.handleDateInput.bind(this);
     this.handleMessageInput = this.handleMessageInput.bind(this);
     this.handleSaveData = this.handleSaveData.bind(this);
+    this.handleClearData = this.handleClearData.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,11 @@ class App extends PureComponent {
       });
     }
   }
+
+  // getToday = () => {
+  //   const today = new Date();
+  //   return `${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`;
+  // };
 
   handleMoodInput(e) {
     const { value } = e.target;
@@ -83,6 +89,16 @@ class App extends PureComponent {
     );
   }
 
+  handleClearData() {
+    this.setState({
+      editor: {
+        mood: ':)',
+        date: 'dd/mm/aaaa',
+        message: '',
+      },
+    });
+  }
+
   render() {
     const { editor, moodCollector } = this.state;
 
@@ -106,6 +122,7 @@ class App extends PureComponent {
                 handleMoodInput={this.handleMoodInput}
                 handleMessageInput={this.handleMessageInput}
                 handleSaveData={this.handleSaveData}
+                handleClearData={this.handleClearData}
               />
             )}
           />

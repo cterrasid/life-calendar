@@ -7,14 +7,6 @@
   flex-direction: $flexDirection;
 }
 
-@mixin gridContainer($display, $gridTempCol, $gridTempRows, $gridColGap, $gridRowGap) {
-  display: $display;
-  grid-template-columns: $gridTempCol;
-  grid-template-rows: $gridTempRows;
-  grid-column-gap: $gridColGap;
-  grid-row-gap: $gridRowGap;
-}
-
 @mixin boxSize($height, $width){
   height: $height;
   width: $width;
@@ -31,8 +23,8 @@
 }
 
 @mixin buttons {
-  border-radius: 5px;
   border: none;
+  width: 100%;
   background-color: $blueMelancholy;
   color: $whiteMind;
   font-weight: bold;
