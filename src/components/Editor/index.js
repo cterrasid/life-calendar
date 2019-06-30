@@ -46,12 +46,10 @@ const Editor = props => {
       ) : null}
       <div className="editor__buttons">
         <Link to="/">
-          <Button handleSaveData={handleSaveData} />
+          <Button value="Save" onClick={handleSaveData} />
         </Link>
         <Link to="/">
-          <label htmlFor="cancel" title="cancel">
-            <input type="button" id="cancel" value="Cancel" />
-          </label>
+          <Button value="Cancel" />
         </Link>
       </div>
     </form>
