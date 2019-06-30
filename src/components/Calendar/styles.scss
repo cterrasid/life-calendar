@@ -1,6 +1,19 @@
 @import '../../scss/variables.scss';
 @import '../../scss/mixins.scss';
 
-// .prueba {
-//   @include mood($happy: true);
-// }
+.calendar {
+  &__container {
+    position: relative;
+    @include mainContainers;
+    @include flexContainer(flex, center, center, column);
+
+    @media all and (min-width: $laptop) {
+      width: 40%;
+    }
+  }
+
+  &__edit {
+    position: absolute;
+    top: 5px;
+  }
+}

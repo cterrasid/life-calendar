@@ -3,9 +3,12 @@
 
 .editor {
   &__container {
-    @include shadowBox;
-    @include boxSize(75%, 90%);
+    @include mainContainers;
     @include flexContainer(flex, space-evenly, center, column);
+
+    @media all and (min-width: $laptop) {
+      width: 40%;
+    }
   }
 
   &__date{

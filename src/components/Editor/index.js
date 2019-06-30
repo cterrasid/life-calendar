@@ -10,7 +10,6 @@ import './styles.scss';
 const Editor = props => {
   const {
     mood,
-    date,
     message,
     handleDateInput,
     handleMoodInput,
@@ -21,11 +20,11 @@ const Editor = props => {
   return (
     <form className="editor__container">
       <div className="editor__date">
-        <p>Date:</p>
-        <InputDate date={date} handleDateInput={handleDateInput} />
+        <p className="editor__title">Date:</p>
+        <InputDate handleDateInput={handleDateInput} />
       </div>
       <div className="editor__mood">
-        <p>Mood:</p>
+        <p className="editor__title">Mood:</p>
         <div className="editor__moods">
           <InputMood
             id="happy"
@@ -63,7 +62,6 @@ const Editor = props => {
 
 Editor.propTypes = {
   mood: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   handleDateInput: PropTypes.func.isRequired,
   handleMoodInput: PropTypes.func.isRequired,

@@ -21,9 +21,10 @@ class App extends PureComponent {
     this.handleDateInput = this.handleDateInput.bind(this);
     this.handleMessageInput = this.handleMessageInput.bind(this);
     this.handleSaveData = this.handleSaveData.bind(this);
+    this.getLocalStorage = this.getLocalStorage.bind(this);
   }
 
-  componentDidMount() {
+  getLocalStorage() {
     if (localStorage.userMood) {
       const userMoodLS = JSON.parse(localStorage.getItem('userMood'));
       this.setState({
@@ -101,7 +102,7 @@ class App extends PureComponent {
                 match={routerProps.match}
                 mood={editor.mood}
                 message={editor.message}
-                date={editor.message}
+                date={editor.date}
                 handleDateInput={this.handleDateInput}
                 handleMoodInput={this.handleMoodInput}
                 handleMessageInput={this.handleMessageInput}
