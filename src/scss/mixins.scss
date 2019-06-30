@@ -1,4 +1,4 @@
-@import '../src/sass/variables.scss';
+@import '../../scss/variables.scss';
 
 @mixin flexContainer($display, $justifyContent, $alignItems, $flexDirection) {
   display: $display;

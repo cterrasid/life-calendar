@@ -1,0 +1,16 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.editor {
+  &__container {
+    @include flexContainer(flex, center, flex-start, column);
+  }
+
+  &__mood{
+
+  }
+
+  &__buttons{
+
+  }
+}

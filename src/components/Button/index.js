@@ -1,18 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './styles.scss';
 
-const Button = props => {
-  const { handleSaveData } = props;
+const Button = () => {
   return (
     <label htmlFor="save" title="save">
-      <input type="button" id="save" value="Save" onClick={handleSaveData} />{' '}
+      <input type="button" />
     </label>
   );
-};
-
-Button.propTypes = {
-  handleSaveData: PropTypes.func.isRequired,
 };
 
 export default Button;

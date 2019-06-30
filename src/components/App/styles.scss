@@ -16,7 +16,7 @@
 
 .app {
   &__container {
-    @include flexContainer(flex, unset, center, center);
+    @include flexContainer(flex, center, center, unset);
     @include boxSize(100vh, unset);
   }
 }

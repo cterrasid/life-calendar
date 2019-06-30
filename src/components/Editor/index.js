@@ -19,39 +19,41 @@ const Editor = props => {
   } = props;
 
   return (
-    <form className="form__container">
+    <form className="editor__container">
       <InputDate date={date} handleDateInput={handleDateInput} />
-      <div className="mood__selector">
+      <div className="editor__mood">
         <p>Mood</p>
         <InputMood
           id="happy"
           name=":)"
-          value="1"
-          checked="1"
+          value=":)"
+          checked=":)"
           handleMoodInput={handleMoodInput}
         />
         <InputMood
           id="sad"
           name=":("
-          value="2"
-          checked="2"
+          value=":("
+          checked=":("
           handleMoodInput={handleMoodInput}
         />
       </div>
-      {mood === '1' ? (
+      {mood === ':)' ? (
         <InputMessage
           message={message}
           handleMessageInput={handleMessageInput}
         />
       ) : null}
-      <Link to="/">
-        <Button handleSaveData={handleSaveData} />
-      </Link>
-      <Link to="/">
-        <label htmlFor="cancel" title="cancel">
-          <input type="button" id="cancel" value="Cancel" />
-        </label>
-      </Link>
+      <div className="editor__buttons">
+        <Link to="/">
+          <Button handleSaveData={handleSaveData} />
+        </Link>
+        <Link to="/">
+          <label htmlFor="cancel" title="cancel">
+            <input type="button" id="cancel" value="Cancel" />
+          </label>
+        </Link>
+      </div>
     </form>
   );
 };
