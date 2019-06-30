@@ -7,7 +7,6 @@ const InputDate = props => {
 
   return (
     <label htmlFor="date" title="date">
-      Date
       <input type="date" id="date" name="date" onChange={handleDateInput} />
     </label>
   );

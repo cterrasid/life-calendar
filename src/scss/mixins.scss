@@ -29,8 +29,12 @@
   box-shadow: 0 4px 12px 0 $niceBlueShadow;
 }
 
-@mixin inputs {
+@mixin boxes {
   border-radius: 5px;
-  border: 1px solid $graySadness;
   box-shadow: 0 4px 12px 0 $niceBlueShadow;
+}
+
+@mixin inputWrapper {
+  @include boxSize(15%, 90%);
+  @include flexContainer(flex, space-evenly, flex-start, column);
 }

@@ -3,14 +3,26 @@
 
 .editor {
   &__container {
-    @include flexContainer(flex, center, flex-start, column);
+    @include boxes;
+    @include boxSize(75%, 90%);
+    @include flexContainer(flex, space-evenly, center, column);
   }
 
-  &__mood{
-
+  &__date{
+    @include inputWrapper;
   }
 
-  &__buttons{
+  &__mood {
+    @include inputWrapper;
+  }
 
+  &__moods{
+    width: 30%;
+    @include flexContainer(flex, space-between, center, row);
+  }
+
+  &__buttons {
+    @include boxSize(10%, 90%);
+    @include flexContainer(flex, space-evenly, center, column);
   }
 }

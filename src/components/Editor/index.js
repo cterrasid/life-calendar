@@ -20,23 +20,28 @@ const Editor = props => {
 
   return (
     <form className="editor__container">
-      <InputDate date={date} handleDateInput={handleDateInput} />
+      <div className="editor__date">
+        <p>Date:</p>
+        <InputDate date={date} handleDateInput={handleDateInput} />
+      </div>
       <div className="editor__mood">
-        <p>Mood</p>
-        <InputMood
-          id="happy"
-          name=":)"
-          value=":)"
-          checked=":)"
-          handleMoodInput={handleMoodInput}
-        />
-        <InputMood
-          id="sad"
-          name=":("
-          value=":("
-          checked=":("
-          handleMoodInput={handleMoodInput}
-        />
+        <p>Mood:</p>
+        <div className="editor__moods">
+          <InputMood
+            id="happy"
+            name=":)"
+            value=":)"
+            checked=":)"
+            handleMoodInput={handleMoodInput}
+          />
+          <InputMood
+            id="sad"
+            name=":("
+            value=":("
+            checked=":("
+            handleMoodInput={handleMoodInput}
+          />
+        </div>
       </div>
       {mood === ':)' ? (
         <InputMessage
