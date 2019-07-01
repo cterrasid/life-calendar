@@ -14,11 +14,9 @@
 
 @mixin mood($happy: true) {
   @if $happy {
-    background-color: yellow;
-    color: black;
+    background: url('../images/happy.png') center center no-repeat transparent;
   } @else {
-    background-color: red;
-    color: white;
+    background: url('../images/sad.png') center center no-repeat transparent;
   }
 }
 

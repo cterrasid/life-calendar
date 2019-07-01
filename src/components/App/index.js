@@ -33,11 +33,6 @@ class App extends PureComponent {
     }
   }
 
-  // getToday = () => {
-  //   const today = new Date();
-  //   return `${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`;
-  // };
-
   handleMoodInput(e) {
     const { value } = e.target;
 
@@ -108,7 +103,12 @@ class App extends PureComponent {
           <Route
             exact
             path="/"
-            render={() => <Calendar moodCollector={moodCollector} />}
+            render={() => (
+              <Calendar
+                moodCollector={moodCollector}
+                handleClearData={this.handleClearData}
+              />
+            )}
           />
           <Route
             path="/editor"

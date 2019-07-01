@@ -5,11 +5,15 @@ import Button from '../Button';
 import './styles.scss';
 
 const Calendar = props => {
-  const { moodCollector } = props;
+  const { moodCollector, handleClearData } = props;
   return (
     <div className="calendar__container">
       <Link to="/editor" className="calendar__edit">
-        <Button value="+" className="calendar__edit-button" />
+        <Button
+          value="+"
+          className="calendar__edit-button"
+          handleData={handleClearData}
+        />
       </Link>
       <section className="calendar__days">
         <ul>
@@ -28,6 +32,7 @@ const Calendar = props => {
 
 Calendar.propTypes = {
   moodCollector: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleClearData: PropTypes.func.isRequired,
 };
 
 export default Calendar;
