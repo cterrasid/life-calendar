@@ -4,15 +4,7 @@
   display: $display;
   justify-content: $justifyContent;
   align-items: $alignItems;
-  flex-direction: $flexDirection;
-}
-
-@mixin gridContainer($display, $gridTempCol, $gridTempRows, $gridColGap, $gridRowGap) {
-  display: $display;
-  grid-template-columns: $gridTempCol;
-  grid-template-rows: $gridTempRows;
-  grid-column-gap: $gridColGap;
-  grid-row-gap: $gridRowGap;
+  flex-flow: $flexDirection;
 }
 
 @mixin boxSize($height, $width){
@@ -20,19 +12,9 @@
   width: $width;
 }
 
-@mixin mood($happy: true) {
-  @if $happy {
-    background-color: yellow;
-    color: black;
-  } @else {
-    background-color: red;
-    color: white;
-  }
-}
-
 @mixin buttons {
-  border-radius: 5px;
   border: none;
+  width: 100%;
   background-color: $blueMelancholy;
   color: $whiteMind;
   font-weight: bold;

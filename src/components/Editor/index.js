@@ -15,47 +15,56 @@ const Editor = props => {
     handleMoodInput,
     handleMessageInput,
     handleSaveData,
+    handleClearData,
   } = props;
 
   return (
     <form className="editor__container">
-      <div className="editor__date">
-        <p className="editor__title">Date:</p>
-        <InputDate handleDateInput={handleDateInput} />
-      </div>
-      <div className="editor__mood">
-        <p className="editor__title">Mood:</p>
-        <div className="editor__moods">
-          <InputMood
-            id="happy"
-            name=":)"
-            value=":)"
-            mood={mood}
-            handleMoodInput={handleMoodInput}
-          />
-          <InputMood
-            id="sad"
-            name=":("
-            value=":("
-            mood={mood}
-            handleMoodInput={handleMoodInput}
-          />
+      <div className="editor__info">
+        <div className="editor__date">
+          <p className="editor__title">Date:</p>
+          <InputDate handleDateInput={handleDateInput} />
         </div>
+        <div className="editor__mood">
+          <p className="editor__title">Mood:</p>
+          <div className="editor__moods">
+            <InputMood
+              id="happy"
+              name=":)"
+              value=":)"
+              mood={mood}
+              handleMoodInput={handleMoodInput}
+            />
+            <InputMood
+              id="sad"
+              name=":("
+              value=":("
+              mood={mood}
+              handleMoodInput={handleMoodInput}
+            />
+          </div>
+        </div>
+        {mood === ':)' ? (
+          <InputMessage
+            message={message}
+            handleMessageInput={handleMessageInput}
+          />
+        ) : null}
       </div>
-      {/* PREGUNTAR A ROCIO */}
-      {mood === ':)' ? (
-        <InputMessage
-          message={message}
-          handleMessageInput={handleMessageInput}
-        />
-      ) : null}
       <div className="editor__buttons">
         <Link to="/">
-          {/* AQUI ESTA LA VAINA QUE FALLA */}
-          <Button value="Save" handleSaveData={handleSaveData} />
+          <Button
+            className="button editor__buttons-save"
+            value="Save"
+            handleData={handleSaveData}
+          />
         </Link>
         <Link to="/">
-          <Button value="Cancel" />
+          <Button
+            className="button editor__buttons-cancel"
+            value="Cancel"
+            handleData={handleClearData}
+          />
         </Link>
       </div>
     </form>
@@ -69,6 +78,7 @@ Editor.propTypes = {
   handleMoodInput: PropTypes.func.isRequired,
   handleMessageInput: PropTypes.func.isRequired,
   handleSaveData: PropTypes.func.isRequired,
+  handleClearData: PropTypes.func.isRequired,
 };
 
 export default Editor;

@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import moment from 'react-moment';
 import Calendar from '../Calendar';
 import Editor from '../Editor';
+import Detail from '../Detail';
 import './styles.scss';
 
 class App extends PureComponent {
@@ -11,7 +13,7 @@ class App extends PureComponent {
     this.state = {
       editor: {
         mood: ':)',
-        date: 'dd/mm/aaaa',
+        date: '',
         message: '',
       },
       moodCollector: [],
@@ -21,6 +23,7 @@ class App extends PureComponent {
     this.handleDateInput = this.handleDateInput.bind(this);
     this.handleMessageInput = this.handleMessageInput.bind(this);
     this.handleSaveData = this.handleSaveData.bind(this);
+    this.handleClearData = this.handleClearData.bind(this);
   }
 
   componentDidMount() {
@@ -73,14 +76,31 @@ class App extends PureComponent {
 
   handleSaveData() {
     const { moodCollector } = this.state;
+
     this.setState(
       state => {
         return {
-          moodCollector: state.moodCollector.concat(state.editor),
+          moodCollector: state.moodCollector
+            .concat(state.editor)
+            .sort(
+              (a, b) =>
+                moment(a.date).format('YYYYMMDD') -
+                moment(b.date).format('YYYYMMDD'),
+            ),
         };
       },
       () => localStorage.setItem('userMood', JSON.stringify(moodCollector)),
     );
+  }
+
+  handleClearData() {
+    this.setState({
+      editor: {
+        mood: ':)',
+        date: '',
+        message: '',
+      },
+    });
   }
 
   render() {
@@ -92,7 +112,12 @@ class App extends PureComponent {
           <Route
             exact
             path="/"
-            render={() => <Calendar moodCollector={moodCollector} />}
+            render={() => (
+              <Calendar
+                moodCollector={moodCollector}
+                handleClearData={this.handleClearData}
+              />
+            )}
           />
           <Route
             path="/editor"
@@ -106,6 +131,18 @@ class App extends PureComponent {
                 handleMoodInput={this.handleMoodInput}
                 handleMessageInput={this.handleMessageInput}
                 handleSaveData={this.handleSaveData}
+                handleClearData={this.handleClearData}
+              />
+            )}
+          />
+          <Route
+            path="/detail"
+            render={routerProps => (
+              <Detail
+                match={routerProps.match}
+                mood={moodCollector.mood}
+                message={moodCollector.message}
+                date={moodCollector.date}
               />
             )}
           />

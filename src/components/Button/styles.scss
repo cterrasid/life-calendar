@@ -1,17 +1,13 @@
 @import '../../scss/mixins.scss';
 @import '../../scss/variables.scss';
 
-button {
+a {
+  width: 100%;
+}
+
+.button {
   margin: 2px;
-  font-size: 18px;
+  font-size: $fontSizeS;
   @include buttons;
-  @include boxSize(30px, 255px);
-
-  @media all and (min-width: $tablet) {
-    min-width: 400px;
-  }
-
-  @media all and (min-width: $laptop) {
-    min-width: 500px;
-  }
+  @include boxSize(100%, 100%);
 }

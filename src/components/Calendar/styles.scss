@@ -14,6 +14,37 @@
 
   &__edit {
     position: absolute;
-    top: 5px;
+    top: 0;
+
+    &-button {
+      margin: 0 auto;
+      border-radius: 5px 5px 0 0;
+      font-size: $fontSizeL !important;
+    }
+  }
+
+  &__days {
+    @include flexContainer(flex, center, flex-start, row wrap);
+
+    &-wrapper {
+      @include boxSize(94%, 100%);
+      overflow-y: scroll;
+      position: absolute;
+      top: 30px
+    }
+  }
+
+  &__day {
+    @include flexContainer(flex, center, center, column);
+    margin: 20px;
+
+    &-mood {
+      @include boxSize(70px, unset);
+      border-radius: 50%;
+    }
+
+    &-date {
+      font-family: $font-secondary;
+    }
   }
 }
