@@ -3,4 +3,8 @@
 
 .message__box {
   @include simpleBox;
+
+  @media all and (min-width: $tablet) {
+    width: 465px;
+  }
 }

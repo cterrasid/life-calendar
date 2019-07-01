@@ -12,14 +12,6 @@
   width: $width;
 }
 
-@mixin mood($happy: true) {
-  @if $happy {
-    background: url('../images/happy.png') center center no-repeat transparent;
-  } @else {
-    background: url('../images/sad.png') center center no-repeat transparent;
-  }
-}
-
 @mixin buttons {
   border: none;
   width: 100%;

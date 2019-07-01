@@ -9,5 +9,5 @@ a {
   margin: 2px;
   font-size: $fontSizeS;
   @include buttons;
-  @include boxSize(90%, 100%);
+  @include boxSize(100%, 100%);
 }

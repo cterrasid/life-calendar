@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import moment from 'react-moment';
 import Calendar from '../Calendar';
 import Editor from '../Editor';
+import Detail from '../Detail';
 import './styles.scss';
 
 class App extends PureComponent {
@@ -11,7 +13,7 @@ class App extends PureComponent {
     this.state = {
       editor: {
         mood: ':)',
-        date: 'dd/mm/aaaa',
+        date: '',
         message: '',
       },
       moodCollector: [],
@@ -74,10 +76,17 @@ class App extends PureComponent {
 
   handleSaveData() {
     const { moodCollector } = this.state;
+
     this.setState(
       state => {
         return {
-          moodCollector: state.moodCollector.concat(state.editor),
+          moodCollector: state.moodCollector
+            .concat(state.editor)
+            .sort(
+              (a, b) =>
+                moment(a.date).format('YYYYMMDD') -
+                moment(b.date).format('YYYYMMDD'),
+            ),
         };
       },
       () => localStorage.setItem('userMood', JSON.stringify(moodCollector)),
@@ -88,7 +97,7 @@ class App extends PureComponent {
     this.setState({
       editor: {
         mood: ':)',
-        date: 'dd/mm/aaaa',
+        date: '',
         message: '',
       },
     });
@@ -123,6 +132,17 @@ class App extends PureComponent {
                 handleMessageInput={this.handleMessageInput}
                 handleSaveData={this.handleSaveData}
                 handleClearData={this.handleClearData}
+              />
+            )}
+          />
+          <Route
+            path="/detail"
+            render={routerProps => (
+              <Detail
+                match={routerProps.match}
+                mood={moodCollector.mood}
+                message={moodCollector.message}
+                date={moodCollector.date}
               />
             )}
           />

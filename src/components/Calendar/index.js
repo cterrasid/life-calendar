@@ -21,13 +21,13 @@ const Calendar = props => {
         <ul className="calendar__days">
           {moodCollector.map(day => (
             <li key={day.date} className="calendar__day">
-              <img
-                className="calendar__day-mood"
-                src={day.mood === ':)' ? happy : sad}
-                alt={day.mood.id}
-              />
-              <p className="calendar__day-date">{day.date}</p>
-              <p className="calendar__day-message">{day.message}</p>
+              <Link to="/detail">
+                <img
+                  className="calendar__day-mood"
+                  src={day.mood === ':)' ? happy : sad}
+                  alt={day.mood.id}
+                />
+              </Link>
             </li>
           ))}
         </ul>

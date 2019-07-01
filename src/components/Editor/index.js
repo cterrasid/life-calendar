@@ -20,35 +20,37 @@ const Editor = props => {
 
   return (
     <form className="editor__container">
-      <div className="editor__date">
-        <p className="editor__title">Date:</p>
-        <InputDate handleDateInput={handleDateInput} />
-      </div>
-      <div className="editor__mood">
-        <p className="editor__title">Mood:</p>
-        <div className="editor__moods">
-          <InputMood
-            id="happy"
-            name=":)"
-            value=":)"
-            mood={mood}
-            handleMoodInput={handleMoodInput}
-          />
-          <InputMood
-            id="sad"
-            name=":("
-            value=":("
-            mood={mood}
-            handleMoodInput={handleMoodInput}
-          />
+      <div className="editor__info">
+        <div className="editor__date">
+          <p className="editor__title">Date:</p>
+          <InputDate handleDateInput={handleDateInput} />
         </div>
+        <div className="editor__mood">
+          <p className="editor__title">Mood:</p>
+          <div className="editor__moods">
+            <InputMood
+              id="happy"
+              name=":)"
+              value=":)"
+              mood={mood}
+              handleMoodInput={handleMoodInput}
+            />
+            <InputMood
+              id="sad"
+              name=":("
+              value=":("
+              mood={mood}
+              handleMoodInput={handleMoodInput}
+            />
+          </div>
+        </div>
+        {mood === ':)' ? (
+          <InputMessage
+            message={message}
+            handleMessageInput={handleMessageInput}
+          />
+        ) : null}
       </div>
-      {mood === ':)' ? (
-        <InputMessage
-          message={message}
-          handleMessageInput={handleMessageInput}
-        />
-      ) : null}
       <div className="editor__buttons">
         <Link to="/">
           <Button
