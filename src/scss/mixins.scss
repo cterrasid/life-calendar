@@ -4,7 +4,7 @@
   display: $display;
   justify-content: $justifyContent;
   align-items: $alignItems;
-  flex-direction: $flexDirection;
+  flex-flow: $flexDirection;
 }
 
 @mixin boxSize($height, $width){

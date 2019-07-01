@@ -51,10 +51,18 @@ const Editor = props => {
       ) : null}
       <div className="editor__buttons">
         <Link to="/">
-          <Button value="Save" handleData={handleSaveData} />
+          <Button
+            className="button editor__buttons-save"
+            value="Save"
+            handleData={handleSaveData}
+          />
         </Link>
         <Link to="/">
-          <Button value="Cancel" handleData={handleClearData} />
+          <Button
+            className="button editor__buttons-cancel"
+            value="Cancel"
+            handleData={handleClearData}
+          />
         </Link>
       </div>
     </form>

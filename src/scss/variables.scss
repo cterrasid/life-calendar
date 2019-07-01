@@ -1,5 +1,11 @@
-//FONTS
-$font-primary: 'Roboto', sans-serif;
+//FONT-TYPE
+$font-primary: 'Raleway', sans-serif;
+$font-secondary: 'Permanent Marker', cursive;
+
+//FONT-SIZE
+$fontSizeS: medium;
+$fontSizeM: larger;
+$fontSizeL: x-large;
 
 //COLOURS
 $whiteMind: #ffffff;
@@ -10,12 +16,7 @@ $grayLife: #b4b2b2;
 $grayPerson: #e1e4e8;
 $niceBlueShadow: #2e374d29;
 
-//MOODS
-$happy: 1;
-
-
 // MEDIA QUERIES
 $tablet: 768px;
 $laptop: 1024px;
 $laptopL: 1440px;
-

@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '../Button';
+import happy from '../../images/happy.png';
+import sad from '../../images/sad.png';
 import './styles.scss';
 
 const Calendar = props => {
@@ -11,21 +13,25 @@ const Calendar = props => {
       <Link to="/editor" className="calendar__edit">
         <Button
           value="+"
-          className="calendar__edit-button"
+          className="button calendar__edit-button"
           handleData={handleClearData}
         />
       </Link>
-      <section className="calendar__days">
-        <ul>
+      <div className="calendar__days-wrapper">
+        <ul className="calendar__days">
           {moodCollector.map(day => (
             <li key={day.date} className="calendar__day">
-              <p className="calendar__day-mood">{day.mood}</p>
+              <img
+                className="calendar__day-mood"
+                src={day.mood === ':)' ? happy : sad}
+                alt={day.mood.id}
+              />
               <p className="calendar__day-date">{day.date}</p>
               <p className="calendar__day-message">{day.message}</p>
             </li>
           ))}
         </ul>
-      </section>
+      </div>
     </div>
   );
 };
