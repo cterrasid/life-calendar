@@ -6,19 +6,14 @@
     position: relative;
     @include mainContainers;
     @include flexContainer(flex, center, center, column);
-
-    @media all and (min-width: $laptop) {
-      width: 40%;
-    }
   }
 
   &__edit {
     position: absolute;
-    top: 0;
+    top: -30px;
 
     &-button {
       margin: 0 auto;
-      border-radius: 5px 5px 0 0;
       font-size: $fontSizeL !important;
     }
   }
@@ -27,24 +22,29 @@
     @include flexContainer(flex, center, flex-start, row wrap);
 
     &-wrapper {
-      @include boxSize(94%, 100%);
+      @include boxSize(100%, 100%);
       overflow-y: scroll;
       position: absolute;
-      top: 30px
     }
   }
 
   &__day {
     @include flexContainer(flex, center, center, column);
-    margin: 20px;
+    margin: 20px auto;
 
     &-mood {
-      @include boxSize(70px, unset);
+      @include boxSize(50px, unset);
       border-radius: 50%;
     }
+    &-info {
+      &--date {
+        font-family: $font-secondary;
+        font-size: $fontSizeXS;
+      }
 
-    &-date {
-      font-family: $font-secondary;
+      &--message {
+        font-size: $fontSizeXS;
+      }
     }
   }
 }

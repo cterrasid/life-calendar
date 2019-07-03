@@ -16,6 +16,7 @@ const Editor = props => {
     handleMessageInput,
     handleSaveData,
     handleClearData,
+    // handleDataInput,
   } = props;
 
   return (
@@ -24,6 +25,7 @@ const Editor = props => {
         <div className="editor__date">
           <p className="editor__title">Date:</p>
           <InputDate handleDateInput={handleDateInput} />
+          {/* <InputDate handleDataInput={handleDataInput} /> */}
         </div>
         <div className="editor__mood">
           <p className="editor__title">Mood:</p>
@@ -33,6 +35,7 @@ const Editor = props => {
               name=":)"
               value=":)"
               mood={mood}
+              // handleDataInput={handleDataInput}
               handleMoodInput={handleMoodInput}
             />
             <InputMood
@@ -40,6 +43,7 @@ const Editor = props => {
               name=":("
               value=":("
               mood={mood}
+              // handleDataInput={handleDataInput}
               handleMoodInput={handleMoodInput}
             />
           </div>
@@ -47,6 +51,7 @@ const Editor = props => {
         {mood === ':)' ? (
           <InputMessage
             message={message}
+            // handleDataInput={handleDataInput}
             handleMessageInput={handleMessageInput}
           />
         ) : null}
@@ -79,6 +84,7 @@ Editor.propTypes = {
   handleMessageInput: PropTypes.func.isRequired,
   handleSaveData: PropTypes.func.isRequired,
   handleClearData: PropTypes.func.isRequired,
+  // handleDataInput: PropTypes.func.isRequired,
 };
 
 export default Editor;

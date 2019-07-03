@@ -4,6 +4,7 @@ import './styles.scss';
 
 const InputMessage = props => {
   const { message, handleMessageInput } = props;
+
   return (
     <label htmlFor="message" title="message">
       <textarea

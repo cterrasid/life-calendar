@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import moment from 'react-moment';
+// import moment from 'react-moment';
 import Calendar from '../Calendar';
 import Editor from '../Editor';
 import Detail from '../Detail';
@@ -24,15 +24,28 @@ class App extends PureComponent {
     this.handleMessageInput = this.handleMessageInput.bind(this);
     this.handleSaveData = this.handleSaveData.bind(this);
     this.handleClearData = this.handleClearData.bind(this);
+    this.getMoodDetail = this.getMoodDetail.bind(this);
+    // this.handleDataInput = this.handleDataInput.bind(this);
   }
 
   componentDidMount() {
     if (localStorage.userMood) {
       const userMoodLS = JSON.parse(localStorage.getItem('userMood'));
+
       this.setState({
         moodCollector: userMoodLS,
       });
     }
+  }
+
+  // handleDataInput(value, key) {
+  //   this.setState({
+  //     [key]: value,
+  //   });
+  // }
+  getMoodDetail(id) {
+    const { moodCollector } = this.state;
+    return moodCollector.find(item => item.id === parseInt(id, 10));
   }
 
   handleMoodInput(e) {
@@ -82,11 +95,14 @@ class App extends PureComponent {
         return {
           moodCollector: state.moodCollector
             .concat(state.editor)
-            .sort(
-              (a, b) =>
-                moment(a.date).format('YYYYMMDD') -
-                moment(b.date).format('YYYYMMDD'),
-            ),
+            .map((item, index) => {
+              return { ...item, id: index + 1 };
+            }),
+          // .sort(
+          //   (a, b) =>
+          //     moment(a.date).format('YYYYMMDD') -
+          //     moment(b.date).format('YYYYMMDD'),
+          // ),
         };
       },
       () => localStorage.setItem('userMood', JSON.stringify(moodCollector)),
@@ -136,13 +152,10 @@ class App extends PureComponent {
             )}
           />
           <Route
-            path="/detail"
+            path="/detail/:id"
             render={routerProps => (
               <Detail
-                match={routerProps.match}
-                mood={moodCollector.mood}
-                message={moodCollector.message}
-                date={moodCollector.date}
+                detail={this.getMoodDetail(routerProps.match.params.id)}
               />
             )}
           />
