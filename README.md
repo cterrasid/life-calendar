@@ -8,10 +8,16 @@ _Single Page Application created with React. The app, is a simple life calendar 
 /
 `-_src
     |-components
-        |-App
-        |-Form
-        |-List
+      |-App
+        |-Calendar
+          |-Detail
+        |-Editor
+          |-InputMood
+          |-InputMessage
+          |-InputDate
+          |-Button
     |-scss
+    |-images
 ```
 
 ## Starting 🚀
@@ -36,6 +42,7 @@ _These instructions will allow you to obtain a copy of the project on your local
 - [react 16.8.6](https://www.npmjs.com/package/react)
 - [react-dom 16.8.6](https://www.npmjs.com/package/react-dom)
 - [react-scripts 3.0.1](https://www.npmjs.com/package/react-scripts)
+- [momentjs 2.2.0](https://www.npmjs.com/package/react-moment)
 
 ### Development dependencies
 
@@ -47,6 +54,10 @@ _These instructions will allow you to obtain a copy of the project on your local
 - [eslint-plugin-react 7.12.4](https://www.npmjs.com/package/eslint-plugin-react)
 - [pre-commit 1.2.2](https://www.npmjs.com/package/pre-commit)
 - [prettier 1.16.4](https://www.npmjs.com/package/prettier)
+
+## License 📄
+
+This project is under the MIT License - see the file [LICENSE.md] (LICENSE.md) for details
 
 ## Author ✒️
 
