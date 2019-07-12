@@ -1,12 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Button from '../Button';
 import happy from '../../images/happy.png';
 import sad from '../../images/sad.png';
 import './styles.scss';
 
 const Detail = props => {
-  const { date, mood, message } = props;
+  const { detail } = props;
+  const { mood, date, message } = detail;
 
   return (
     <div className="detail__container">
@@ -15,17 +17,19 @@ const Detail = props => {
         src={mood === ':)' ? happy : sad}
         alt={mood}
       />
-      <p className="detail__date">{date}</p>
-      <p className="detail__message">{message}</p>
-      <Link to="/">Go Back</Link>
+      <div className="detail__info">
+        <p className="detail__info--date">{date}</p>
+        <p className="detail__info--message">{message}</p>
+      </div>
+      <Link to="/">
+        <Button value="Go Back" className="button detail__goback-button" />
+      </Link>
     </div>
   );
 };
 
 Detail.propTypes = {
-  mood: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  detail: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 export default Detail;

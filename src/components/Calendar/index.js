@@ -8,6 +8,7 @@ import './styles.scss';
 
 const Calendar = props => {
   const { moodCollector, handleClearData } = props;
+
   return (
     <div className="calendar__container">
       <Link to="/editor" className="calendar__edit">
@@ -20,12 +21,12 @@ const Calendar = props => {
       <div className="calendar__days-wrapper">
         <ul className="calendar__days">
           {moodCollector.map(day => (
-            <li key={day.date} className="calendar__day">
-              <Link to="/detail">
+            <li key={`${day.id} ${day.date}`} className="calendar__day">
+              <Link to="/detail/:id">
                 <img
                   className="calendar__day-mood"
                   src={day.mood === ':)' ? happy : sad}
-                  alt={day.mood.id}
+                  alt={day.mood}
                 />
               </Link>
             </li>

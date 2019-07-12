@@ -43,8 +43,15 @@
       border-radius: 50%;
     }
 
-    &-date {
-      font-family: $font-secondary;
+    &-info {
+      &--date {
+        font-family: $font-secondary;
+        font-size: $fontSizeXS;
+      }
+
+      &--message {
+        font-size: $fontSizeXS;
+      }
     }
   }
 }

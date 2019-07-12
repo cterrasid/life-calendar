@@ -6,8 +6,9 @@ a {
 }
 
 .button {
-  margin: 2px;
-  font-size: $fontSizeS;
   @include buttons;
   @include boxSize(100%, 100%);
+  margin: 2px;
+  font-size: $fontSizeS;
+  cursor: pointer;
 }
