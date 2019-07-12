@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Route, Switch } from 'react-router-dom';
-// import moment from 'react-moment';
+import moment from 'moment';
 import Calendar from '../Calendar';
 import Editor from '../Editor';
 import Detail from '../Detail';
@@ -16,7 +16,7 @@ class App extends PureComponent {
         date: '',
         message: '',
       },
-      moodCollector: [],
+      moodCollector: JSON.parse(localStorage.getItem('userMood')) || [],
     };
 
     this.handleMoodInput = this.handleMoodInput.bind(this);
@@ -25,24 +25,8 @@ class App extends PureComponent {
     this.handleSaveData = this.handleSaveData.bind(this);
     this.handleClearData = this.handleClearData.bind(this);
     this.getMoodDetail = this.getMoodDetail.bind(this);
-    // this.handleDataInput = this.handleDataInput.bind(this);
   }
 
-  componentDidMount() {
-    if (localStorage.userMood) {
-      const userMoodLS = JSON.parse(localStorage.getItem('userMood'));
-
-      this.setState({
-        moodCollector: userMoodLS,
-      });
-    }
-  }
-
-  // handleDataInput(value, key) {
-  //   this.setState({
-  //     [key]: value,
-  //   });
-  // }
   getMoodDetail(id) {
     const { moodCollector } = this.state;
     return moodCollector.find(item => item.id === parseInt(id, 10));
@@ -88,22 +72,18 @@ class App extends PureComponent {
   }
 
   handleSaveData() {
-    const { moodCollector } = this.state;
+    const { moodCollector, editor } = this.state;
+
+    const newMoodCollector = moodCollector
+      .concat(editor)
+      .map((item, index) => {
+        return { ...item, id: index + 1 };
+      })
+      .sort((a, b) => moment(a.date, 'YYYYMMDD') - moment(b.date, 'YYYYMMDD'));
 
     this.setState(
-      state => {
-        return {
-          moodCollector: state.moodCollector
-            .concat(state.editor)
-            .map((item, index) => {
-              return { ...item, id: index + 1 };
-            }),
-          // .sort(
-          //   (a, b) =>
-          //     moment(a.date).format('YYYYMMDD') -
-          //     moment(b.date).format('YYYYMMDD'),
-          // ),
-        };
+      {
+        moodCollector: newMoodCollector,
       },
       () => localStorage.setItem('userMood', JSON.stringify(moodCollector)),
     );

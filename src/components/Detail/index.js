@@ -8,17 +8,18 @@ import './styles.scss';
 
 const Detail = props => {
   const { detail } = props;
+  const { mood, date, message } = detail;
 
   return (
     <div className="detail__container">
       <img
         className="detail__mood"
-        src={detail.mood === ':)' ? happy : sad}
-        alt={detail.mood}
+        src={mood === ':)' ? happy : sad}
+        alt={mood}
       />
       <div className="detail__info">
-        <p className="detail__info--date">{detail.date}</p>
-        <p className="detail__info--message">{detail.message}</p>
+        <p className="detail__info--date">{date}</p>
+        <p className="detail__info--message">{message}</p>
       </div>
       <Link to="/">
         <Button value="Go Back" className="button detail__goback-button" />

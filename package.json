@@ -1,9 +1,9 @@
 {
   "name": "adalab-boiler-plate",
   "version": "0.1.0",
+  "homepage": "./",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.0",
     "moment": "^2.24.0",
     "momentjs": "^2.0.0",
     "prop-types": "^15.7.2",

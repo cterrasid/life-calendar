@@ -30,7 +30,7 @@
 
   &__day {
     @include flexContainer(flex, center, center, column);
-    margin: 20px auto;
+    margin: 20px;
 
     &-mood {
       @include boxSize(50px, unset);
