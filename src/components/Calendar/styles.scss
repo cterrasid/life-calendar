@@ -6,14 +6,19 @@
     position: relative;
     @include mainContainers;
     @include flexContainer(flex, center, center, column);
+
+    @media all and (min-width: $laptop) {
+      width: 40%;
+    }
   }
 
   &__edit {
     position: absolute;
-    top: -30px;
+    top: 0;
 
     &-button {
       margin: 0 auto;
+      border-radius: 5px 5px 0 0;
       font-size: $fontSizeL !important;
     }
   }
@@ -22,9 +27,10 @@
     @include flexContainer(flex, center, flex-start, row wrap);
 
     &-wrapper {
-      @include boxSize(100%, 100%);
+      @include boxSize(94%, 100%);
       overflow-y: scroll;
       position: absolute;
+      top: 30px
     }
   }
 
@@ -33,9 +39,10 @@
     margin: 20px;
 
     &-mood {
-      @include boxSize(50px, unset);
+      @include boxSize(70px, unset);
       border-radius: 50%;
     }
+
     &-info {
       &--date {
         font-family: $font-secondary;
